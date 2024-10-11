@@ -93,12 +93,24 @@ To set up the application and web services, follow these steps:
    ```
 
 5. **Build and run the Docker containers:**
+      
+   Before running the application, ensure that the following ports are free and available on your machine:
+   
+   - **8000**: Used for the web application (Laravel framework)
+   - **5432**: Used for PostgreSQL database connection
+   - **6379**: Used for Redis
+   - **1025**: Used for MailHog SMTP server
+   - **8025**: Used for MailHog web interface
+   
+   Make sure that no other services are running on these ports to avoid conflicts when starting the application.
+
+   To build and run the Docker containers, use the following commands:
    ```bash
    docker-compose up -d --build
    docker-compose ps
    ```
 
-6. **Install dependencies for the app:**
+7. **Install dependencies for the app:**
    ```bash
    docker-compose exec app sh
    composer install
