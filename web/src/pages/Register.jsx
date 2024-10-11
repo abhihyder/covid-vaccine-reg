@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import http from "../utils/http"; // Replace this with your Axios/HTTP instance
+import http from "../utils/http";
 
 export default () => {
   const [formData, setFormData] = useState({
@@ -12,7 +12,6 @@ export default () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch vaccine centers from API when the component mounts
     const fetchVaccineCenters = async () => {
       http
         .get("/vaccine-centers")
@@ -36,7 +35,6 @@ export default () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Perform basic validation if needed (e.g., ensure all fields are filled)
     if (
       !formData.name ||
       !formData.email ||
@@ -53,8 +51,7 @@ export default () => {
 
       // Handle the response from the server
       if (response.status === 201) {
-        alert("Registration successful!");
-        // Optionally, reset the form or redirect the user to a success page
+        alert("Registration successful! Check your email for confirmation.");
         setFormData({
           name: "",
           email: "",

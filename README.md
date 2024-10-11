@@ -21,7 +21,7 @@ The system consists of the following Docker services:
 - **web**: Frontend service.
 - **worker**: Handles background tasks like queue processing.
 - **database**: Manages persistent data storage.
-- **redis**: Caching service for performance optimization.
+- **redis**: Queue and Caching service for performance optimization.
 - **certbot**: Manages SSL certificates for HTTPS.
 - **mailhog**: Email testing tool.
 
@@ -109,7 +109,14 @@ To set up the application and web services, follow these steps:
 After the setup is complete, you can access the application by navigating to:
 
 ```
-http://localhost:8000
+http://127.0.0.1:8000
+```
+
+## Monitoring Mail Service
+You can monitor the mail service using Mailhog, which captures outgoing emails. Visit the Mailhog web interface at:
+
+```
+http://127.0.0.1:8025
 ```
 
 ## Stopping Services

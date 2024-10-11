@@ -55,7 +55,7 @@ export default function SearchVaccineRegistration() {
         return (
           <p className="text-green-600">
             Your vaccination is scheduled on {schedule.scheduled_date}. Please make sure
-            to attend on the scheduled date at {schedule.center.name}.
+            to attend on the scheduled date at {schedule.vaccine_center.name}.
           </p>
         );
       case "vaccinated":
