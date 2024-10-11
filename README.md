@@ -81,20 +81,24 @@ To set up the application and web services, follow these steps:
    cp app/.env.example app/.env
    cp web/.env.example web/.env
    ```
-
-3. **Set proper permissions for storage:**
+3. **Env symlink:** Set up a symlink between the root `.env` file and the `app/.env` for easier configuration management:
+   ```
+   ln -sf app/.env .env
+   ```
+   This command creates a symbolic link between .env in the root directory and app/.env so that they share the same environment variables.
+4. **Set proper permissions for storage:**
    ```bash
    sudo chmod 777 -R app/storage/logs
    sudo chmod 777 -R app/storage/framework
    ```
 
-4. **Build and run the Docker containers:**
+5. **Build and run the Docker containers:**
    ```bash
    docker-compose up -d --build
    docker-compose ps
    ```
 
-5. **Install dependencies for the app:**
+6. **Install dependencies for the app:**
    ```bash
    docker-compose exec app sh
    composer install
