@@ -43,6 +43,22 @@ class VaccineCenterService
     }
 
     /**
+     * Ensures that the given date falls on a weekday (Sunday to Thursday).
+     *
+     * @param Carbon $date The date to check.
+     * @return Carbon The next available weekday.
+     */
+    public function getNextWeekday(Carbon $date): Carbon
+    {
+        // Check if the day is Friday (6) or Saturday (7), if so, move to Sunday
+        while ($date->isFriday() || $date->isSaturday()) {
+            $date->addDay();
+        }
+
+        return $date;
+    }
+
+    /**
      * Get the next available vaccine schedule date for a center based on its daily capacity.
      *
      * @param int $vaccineCenterId The ID of the vaccine center.
@@ -74,21 +90,5 @@ class VaccineCenterService
 
         // If the latest scheduled date is full, move to the next available date
         return $this->getNextWeekday($scheduleDate->addDay());
-    }
-
-    /**
-     * Ensures that the given date falls on a weekday (Sunday to Thursday).
-     *
-     * @param Carbon $date The date to check.
-     * @return Carbon The next available weekday.
-     */
-    protected function getNextWeekday(Carbon $date): Carbon
-    {
-        // Check if the day is Friday (6) or Saturday (7), if so, move to Sunday
-        while ($date->isFriday() || $date->isSaturday()) {
-            $date->addDay();
-        }
-
-        return $date;
     }
 }

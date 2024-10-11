@@ -15,5 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         VaccineCenter::factory(20)->create();
+
+        $this->call(UserSeeder::class);
     }
 }

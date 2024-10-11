@@ -39,7 +39,7 @@ export default function SearchVaccineRegistration() {
         );
       case "not_scheduled":
         return (
-          <p className="text-green-600">
+          <p className="text-yellow-600">
             Your registration is approved, but a vaccination date has not been
             scheduled yet. Please wait for further updates.
           </p>

@@ -112,6 +112,16 @@ After the setup is complete, you can access the application by navigating to:
 http://127.0.0.1:8000
 ```
 
+## Test Data
+During seeding, several test users are created with specific NID numbers. You can use the following NID numbers to search for user vaccination status:
+
+- **John Doe** - NID: `1234567890`
+- **Jane Smith** - NID: `1234567891`
+- **Alice Johnson** - NID: `1234567892`
+- **John Cena** - NID: `1234567893`
+
+These users have been registered in the system and can be used for testing the vaccine registration functionalities.
+
 ## Monitoring Mail Service
 You can monitor the mail service using Mailhog, which captures outgoing emails. Visit the Mailhog web interface at:
 
