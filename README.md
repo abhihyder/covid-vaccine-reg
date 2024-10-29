@@ -117,6 +117,20 @@ To set up the application and web services, follow these steps:
    php artisan migrate --seed
    ```
 
+## Running Test Cases
+To verify that all functionalities work as expected, follow these steps to run the test cases:
+
+1. **Run Specific Test File**:
+
+   Use PHPUnit to execute the test cases in `VaccineCenterServiceTest.php`. Run the following commands in your terminal:
+
+   ```bash
+   docker-compose exec app sh
+   ./vendor/bin/phpunit tests/Feature/VaccineCenterServiceTest.php
+   ```
+
+   This will run only the tests defined in `VaccineCenterServiceTest.php`, allowing you to focus on testing that specific service. 
+
 ## Accessing the Application
 After the setup is complete, you can access the application by navigating to:
 
