@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Enums\ScheduleStatus;
 use App\Mail\VaccineNotification;
 use App\Models\User;
+use App\Models\VaccineRegistration;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +25,7 @@ class VaccineService
      * @param  array  $attributes
      * @return \App\Models\VaccineRegistration
      */
-    public function vaccineRegister(array $attributes)
+    public function vaccineRegister(array $attributes): VaccineRegistration
     {
         try {
             $userData = array_merge(Arr::only($attributes, ['name', 'email', 'nid']), [
@@ -48,7 +49,13 @@ class VaccineService
         }
     }
 
-    public function searchSchedule($nid)
+    /**
+     * Search for a user's vaccination schedule based on their NID.
+     *
+     * @param  string  $nid
+     * @return array
+     */
+    public function searchSchedule($nid): array
     {
         $user = User::with('vaccineRegistration.vaccineCenter:id,name,address')->where('nid', $nid)->first();
 
