@@ -9,6 +9,12 @@
 - [Project Structure](#project-structure)
 - [App and Web Setup](#app-and-web-setup)
 - [Accessing the Application](#accessing-the-application)
+- [Running Test Cases](#running-test-cases)
+- [Test Data](#test-data)
+- [Monitoring Services](#monitoring-services)
+  - [Mail Service](#mail-service)
+  - [Queue Monitoring with Horizon](#queue-monitoring-with-horizon)
+  - [Application Debugging with Telescope](#application-debugging-with-telescope)
 - [Stopping Services](#stopping-services)
 
 ## Introduction
@@ -82,10 +88,10 @@ To set up the application and web services, follow these steps:
    cp web/.env.example web/.env
    ```
 3. **Env symlink:** Set up a symlink between the root `.env` file and the `app/.env` for easier configuration management:
-   ```
+   ```bash
    ln -sf app/.env .env
    ```
-   This command creates a symbolic link between .env in the root directory and app/.env so that they share the same environment variables.
+   This command creates a symbolic link between `.env` in the root directory and `app/.env` so that they share the same environment variables.
 4. **Set proper permissions for storage:**
    ```bash
    sudo chmod 776 -R app/storage/logs
@@ -110,7 +116,7 @@ To set up the application and web services, follow these steps:
    docker-compose ps
    ```
 
-7. **Install dependencies for the app:**
+6. **Install dependencies for the app:**
    ```bash
    docker-compose exec app sh
    composer install
@@ -148,12 +154,40 @@ During seeding, several test users are created with specific NID numbers. You ca
 
 These users have been registered in the system and can be used for testing the vaccine registration functionalities.
 
-## Monitoring Mail Service
+## Monitoring Services
+
+### Mail Service
 You can monitor the mail service using Mailhog, which captures outgoing emails. Visit the Mailhog web interface at:
 
 ```
 http://127.0.0.1:8025
 ```
+
+### Queue Monitoring with Horizon
+Laravel Horizon provides a dashboard to monitor and manage your Redis-based queues. To view Horizon:
+
+1. Ensure Horizon is running, typically via a Docker container if defined.
+2. Visit the Horizon dashboard:
+
+```
+http://127.0.0.1:8000/monitoring/horizon
+```
+
+From the Horizon dashboard, you can view job statuses, manage queue priorities, and monitor overall queue health.
+
+### Application Debugging with Telescope
+Laravel Telescope provides real-time application debugging and insights. To access Telescope:
+
+1. Ensure Telescope is configured and running.
+2. Visit the Telescope dashboard:
+
+```
+http://127.0.0.1:8000/monitoring/telescope
+```
+
+From the Telescope dashboard, you can monitor request logs, exceptions, database queries, scheduled tasks, and more, helping you diagnose issues and optimize the application.
+
+**Note**: You can access the monitoring URLs for Horizon and Telescope without any authentication, as the app currently does not implement an authentication process. This means that the Horizon and Telescope dashboards are publicly accessible.
 
 ## Stopping Services
 To stop all running Docker services, use the following command:
