@@ -94,8 +94,8 @@ To set up the application and web services, follow these steps:
    This command creates a symbolic link between `.env` in the root directory and `app/.env` so that they share the same environment variables.
 4. **Set proper permissions for storage:**
    ```bash
-   sudo chmod 776 -R app/storage/logs
-   sudo chmod 776 -R app/storage/framework
+   sudo chmod 777 -R app/storage/logs
+   sudo chmod 777 -R app/storage/framework
    ```
 
 5. **Build and run the Docker containers:**
