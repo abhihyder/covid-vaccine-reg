@@ -28,7 +28,6 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
     protected function gate(): void
     {
         Gate::define('viewHorizon', function ($user) {
-            // Since currently we don't have authentication process, just return true
             return in_array($user->email, [
                 //
             ]);

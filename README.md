@@ -1,21 +1,23 @@
 # COVID-19 Vaccine Registration System
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Docker Services](#docker-services)
-- [Prerequisites](#prerequisites)
-- [Optional: Stop & Remove All Containers](#optional-stop--remove-all-containers)
-- [Installation](#installation)
-- [Project Structure](#project-structure)
-- [App and Web Setup](#app-and-web-setup)
-- [Accessing the Application](#accessing-the-application)
-- [Running Test Cases](#running-test-cases)
-- [Test Data](#test-data)
-- [Monitoring Services](#monitoring-services)
-  - [Mail Service](#mail-service)
-  - [Queue Monitoring with Horizon](#queue-monitoring-with-horizon)
-  - [Application Debugging with Telescope](#application-debugging-with-telescope)
-- [Stopping Services](#stopping-services)
+- [COVID-19 Vaccine Registration System](#covid-19-vaccine-registration-system)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Docker Services](#docker-services)
+  - [Prerequisites](#prerequisites)
+  - [Optional: Stop \& Remove All Containers](#optional-stop--remove-all-containers)
+  - [Installation](#installation)
+  - [Project Structure](#project-structure)
+  - [App and Web Setup](#app-and-web-setup)
+  - [Running Test Cases](#running-test-cases)
+  - [Accessing the Application](#accessing-the-application)
+  - [Test Data](#test-data)
+  - [Monitoring Services](#monitoring-services)
+    - [Mail Service](#mail-service)
+    - [Queue Monitoring with Horizon](#queue-monitoring-with-horizon)
+    - [Application Debugging with Telescope](#application-debugging-with-telescope)
+  - [Stopping Services](#stopping-services)
 
 ## Introduction
 The COVID-19 Vaccine Registration System is a Docker-based project that simplifies the setup and deployment of the app and web services for vaccine registration. The system provides a complete environment for managing vaccine registrations, including app, web, and database services.
@@ -187,7 +189,7 @@ http://127.0.0.1:8000/monitoring/telescope
 
 From the Telescope dashboard, you can monitor request logs, exceptions, database queries, scheduled tasks, and more, helping you diagnose issues and optimize the application.
 
-**Note**: You can access the monitoring URLs for Horizon and Telescope without any authentication, as the app currently does not implement an authentication process. This means that the Horizon and Telescope dashboards are publicly accessible.
+**Note**: In the local environment, Horizon and Telescope dashboards are publicly accessible without authentication, as the app does not currently implement an authentication process.
 
 ## Stopping Services
 To stop all running Docker services, use the following command:

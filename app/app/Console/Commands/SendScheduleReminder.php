@@ -32,15 +32,16 @@ class SendScheduleReminder extends Command
         // Get users who are scheduled for vaccination tomorrow
         $tomorrow = Carbon::now()->addDay()->toDateString();
 
-        $registrations = VaccineRegistration::with(['user', 'vaccineCenter'])
+        VaccineRegistration::with(['user', 'vaccineCenter'])
             ->where('scheduled_date', $tomorrow)
             ->where('is_vaccinated', false)
-            ->get();
-        foreach ($registrations as $registration) {
-            // Send reminder notification
-            Mail::to($registration->user->email)
-                ->send(new VaccineNotification($registration));
-        }
+            ->chunk(100, function ($registrations) {
+                foreach ($registrations as $registration) {
+                    // Send reminder notification
+                    Mail::to($registration->user->email)
+                        ->send(new VaccineNotification($registration));
+                }
+            });
 
         $this->info('Reminders sent to users scheduled for tomorrow.');
     }

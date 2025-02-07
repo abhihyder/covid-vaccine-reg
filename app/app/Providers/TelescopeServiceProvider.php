@@ -56,7 +56,6 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     protected function gate(): void
     {
         Gate::define('viewTelescope', function ($user) {
-            // Since currently we don't have authentication process, just return true
             return in_array($user->email, [
                 //
             ]);
