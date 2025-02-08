@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('vaccine_center_id')->constrained()->onDelete('cascade');
-            $table->date('scheduled_date');
+            $table->date('scheduled_date')->index();
             $table->boolean('is_vaccinated')->default(false);
             $table->timestamps();
         });
